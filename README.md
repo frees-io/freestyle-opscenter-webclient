@@ -1,6 +1,6 @@
 # Freestyler Opscenter
 
-This project is an interactive visual web interface to operate and get metrics and data related with the different Freestyle microservices. 
+This project is an interactive visual web interface to operate and get metrics and data related with the different Freestyle microservices.
 
 ## Installation
 
@@ -30,3 +30,12 @@ Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.gi
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
+
+
+# Copyright
+
+Freestyle is designed and developed by 47 Degrees
+
+Copyright (C) 2017 47 Degrees. <http://47deg.com>
+
+[comment]: # (End Copyright)
