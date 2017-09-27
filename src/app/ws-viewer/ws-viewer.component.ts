@@ -10,38 +10,32 @@ import { WsService } from './ws.service';
 })
 export class WsViewerComponent implements OnInit {
   title = 'WebSockets example';
-  value: number;
+  value: string;
   subscription: Subscription;
 
   constructor(private wsService: WsService) { }
 
   ngOnInit() { }
 
-  startListening() {
+  startListening(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    const wsSubject = this.wsService.getSubject();
-    // If the websocket is “cold” we need to send a first message to get it started
-    wsSubject.next('hello');
-    this.subscription = wsSubject.subscribe(
-      (msg) => {
-        console.log(msg);
-        // mySocket.next(data);
-        this.value = msg.data;
-      }
-    );
+    this.subscription = this.wsService.getSubject('handshake')
+      .subscribe(
+        async (msg) => this.value = await msg
+      );
   }
 
   isCurrentlyListening(): boolean {
     return (this.subscription && !this.subscription.closed);
   }
 
-  toggleListening() {
+  toggleListening(): void {
     this.isCurrentlyListening() ? this.stopListening() : this.startListening();
   }
 
-  stopListening() {
+  stopListening(): void {
     this.subscription.unsubscribe();
   }
 
