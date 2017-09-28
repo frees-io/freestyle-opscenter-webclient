@@ -12,7 +12,7 @@
       <md-sidenav #sidenav class="sidenav" mode="side" opened="true">
         <md-nav-list>
           <md-list-item *ngFor="let link of links">
-            <a routerLink="/ws-viewer" routerLinkActive="active" mdLine>Item {{ link }}</a>
+            <a routerLink="/ws-viewer" routerLinkActive="active" mdLine>Microservice MS{{ link | number:'2.0-0'}}</a>
             <button md-icon-button>
               <md-icon>info</md-icon>
             </button>

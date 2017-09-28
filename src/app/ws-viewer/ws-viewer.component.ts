@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 
 import { WsService } from './ws.service';
@@ -11,7 +10,7 @@ import { Metric } from '../shared/metric.model';
   styleUrls: ['./ws-viewer.component.scss']
 })
 export class WsViewerComponent implements OnInit {
-  title = 'WebSockets example';
+  title = 'Metric streaming example';
   metric: Metric;
   subscription: Subscription;
 
