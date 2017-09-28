@@ -13,9 +13,18 @@
 
     <div *ngIf="isCurrentlyListening()">
 
-      <md-grid-list cols="1" rowHeight="fit">
+      <md-grid-list cols="2" rowHeight="fit">
         <md-grid-tile>
-          <h2>{{ value }}</h2>
+          <div>{{ metric?.microservice }}</div>
+        </md-grid-tile>
+        <md-grid-tile>
+          <div>{{ metric?.date | date:'y/MM/dd HH:mm:ss (Z)' }}</div>
+        </md-grid-tile>
+        <md-grid-tile>
+          <h2>{{ metric?.metric }}</h2>
+        </md-grid-tile>
+        <md-grid-tile>
+          <h2>{{ metric?.value }}</h2>
         </md-grid-tile>
       </md-grid-list>
 

@@ -8,8 +8,8 @@ import 'rxjs/add/observable/dom/webSocket';
 @Injectable()
 export class WsService {
 
-  private wsUrl = 'ws://localhost:8080/metrics';
-  // private wsUrl = 'ws://localhost:3000';
+  // private wsUrl = 'ws://localhost:8080/metrics';
+  private wsUrl = 'ws://localhost:3000';
   // private wsUrl = 'ws://echo.websocket.org/';
 
   private wsc = {

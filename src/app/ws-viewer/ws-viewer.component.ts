@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 
 import { WsService } from './ws.service';
+import { Metric } from '../shared/metric.model';
 
 @Component({
   selector: 'app-ws-viewer',
@@ -10,7 +12,7 @@ import { WsService } from './ws.service';
 })
 export class WsViewerComponent implements OnInit {
   title = 'WebSockets example';
-  value: string;
+  metric: Metric;
   subscription: Subscription;
 
   constructor(private wsService: WsService) { }
@@ -21,9 +23,10 @@ export class WsViewerComponent implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    this.subscription = this.wsService.getSubject('handshake')
+    // this.subscription = this.wsService.getSubject('handshake')
+    this.subscription = this.wsService.getSubject()
       .subscribe(
-        async (msg) => this.value = await msg
+        async (msg) => this.metric = new Metric((await msg).split(' '))
       );
   }
 
