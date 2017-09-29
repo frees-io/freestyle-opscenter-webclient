@@ -25,7 +25,7 @@ export class WsViewerComponent implements OnInit {
     // this.subscription = this.wsService.getSubject('handshake')
     this.subscription = this.wsService.getSubject()
       .subscribe(
-        async (msg) => this.metric = new Metric((await msg).split(' '))
+        async (msg) => this.metric = new Metric(...(await msg).split(' '))
       );
   }
 
