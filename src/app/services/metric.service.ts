@@ -7,7 +7,7 @@ import 'rxjs/add/observable/dom/webSocket';
 import { environment } from 'environments/environment';
 
 @Injectable()
-export class WsService {
+export class MetricService {
 
   private wsc = {
     url: environment.metricsEndpoint,

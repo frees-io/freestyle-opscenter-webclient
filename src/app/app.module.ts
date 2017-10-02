@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 // Presentational modules
-import {  MdToolbarModule,
+import {  MdMenuModule,
+          MdToolbarModule,
           MdButtonModule,
           MdSidenavModule,
           MdGridListModule,
@@ -16,29 +17,38 @@ import {  MdToolbarModule,
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// WsViewer
-import { WsViewerComponent } from './ws-viewer/ws-viewer.component';
-import { WsService } from './ws-viewer/ws.service';
+// Services
+import { MetricService } from './services/metric.service';
+
+// Components
+import { MsViewerComponent } from './ms-viewer/ms-viewer.component';
+import { NavGridComponent } from './nav-grid/nav-grid.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WsViewerComponent
+    MsViewerComponent,
+    NavGridComponent,
+    PageNotFoundComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
-    MdButtonModule,
+    MdMenuModule,
     MdToolbarModule,
+    MdButtonModule,
     MdSidenavModule,
     MdGridListModule,
     MdIconModule,
     MdListModule,
     MdProgressBarModule
   ],
-  providers: [WsService],
+  providers: [MetricService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

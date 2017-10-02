@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tile-list {
+  flex: 1 1 auto;
+
+  .tile {
+    transition: background-color .3s ease;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}

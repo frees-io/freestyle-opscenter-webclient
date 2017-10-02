@@ -1,20 +1,35 @@
 <section class="app mat-typography">
 
-  <md-toolbar color="primary" class="mat-elevation-z10">
+  <md-toolbar color="primary" class="toolbar mat-elevation-z10">
+    <div class="logo-container">
+      <button md-button class="toolbar-button" routerLink="/">
+        <md-icon>assessment</md-icon>
+      </button>
+      <span>Freestyle Opscenter</span>
+    </div>
     <button md-button class="toolbar-button" (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
-    <span>Freestyle Opscenter</span>
+    <div class="fill-space"></div>
+    <button md-button class="toolbar-button" routerLink="settings">
+      <md-icon>settings</md-icon>
+    </button>
+    <div class="user mat-body-2">
+      <md-icon>person</md-icon>
+      <span>Testing user</span>
+      <md-icon>keyboard_arrow_down</md-icon>
+    </div>
   </md-toolbar>
 
-  <md-sidenav-container>
+  <md-sidenav-container class="sidenav-container">
 
       <md-sidenav #sidenav class="sidenav" mode="side" opened="true">
         <md-nav-list>
-          <md-list-item *ngFor="let link of links">
-            <a routerLink="/ws-viewer" routerLinkActive="active" mdLine>Microservice MS{{ link | number:'2.0-0'}}</a>
+          <h3 mat-subheader>Microservices</h3>
+          <md-list-item *ngFor="let link of links" routerLink="/ms/{{ link | number:'2.0-0'}}" routerLinkActive="active">
+            <span mdLine>Microservice MS{{ link | number:'2.0-0'}}</span>
             <button md-icon-button>
-              <md-icon>info</md-icon>
+              <md-icon>grain</md-icon>
             </button>
           </md-list-item>
         </md-nav-list>
