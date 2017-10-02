@@ -6,6 +6,18 @@ This project is an interactive visual web interface to operate and get metrics a
 
 The project manage its dependencies through npm. It has been built with Angular 4.3, relying on RxJs 5.4, and it uses Webpack for build purposes. To get it installed you can run `npm install` or `yarn`.
 
+## Configuration
+
+Generally available configuration parameters can be set per environment. To do so, please edit the files on the environment directory, e.g. to change the default endpoint from which to read metrics go and change the value of the `metricsEndpoint` property on the environment object:
+
+```
+export const environment = {
+  (..)
+  metricsEndpoint: 'ws://localhost:3000'
+  (...)
+};
+```
+
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

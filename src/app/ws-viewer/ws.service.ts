@@ -4,16 +4,13 @@ import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
 // Operators
 import 'rxjs/add/observable/dom/webSocket';
 
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class WsService {
 
-  // private wsUrl = 'ws://localhost:8080/metrics';
-  private wsUrl = 'ws://localhost:3000';
-  // private wsUrl = 'ws://echo.websocket.org/';
-
   private wsc = {
-    url: this.wsUrl,
+    url: environment.metricsEndpoint,
     resultSelector: this.wscResultSelector
   };
 

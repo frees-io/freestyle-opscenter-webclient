@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // metricsEndpoint = 'ws://localhost:8080/metrics'
+  metricsEndpoint: 'ws://localhost:3000'
 };
