@@ -12,7 +12,7 @@ Generally available configuration parameters can be set per environment. To do s
 
 ```
 export const environment = {
-  (..)
+  (...)
   metricsEndpoint: 'ws://localhost:3000'
   (...)
 };
