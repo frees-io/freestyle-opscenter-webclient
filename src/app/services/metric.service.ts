@@ -5,6 +5,7 @@ import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
 import 'rxjs/add/observable/dom/webSocket';
 
 import { environment } from 'environments/environment';
+import { load } from "protobufjs"; // respectively "./node_modules/protobufjs"
 
 @Injectable()
 export class MetricService {
@@ -32,23 +33,28 @@ export class MetricService {
    * @param e: MessageEvent
    */
   private wscResultSelector(e: MessageEvent): any {
-    const reader = new FileReader();
 
-    const promise = new Promise<string>((resolve, reject) => {
+    // TODO: Move this logic to the right place
+
+    load("assets/metric.proto", function(err, root) {
+      if (err)
+        throw err;
+
+      // example code
+      const ListMetricsProto = root.lookupType("freestyleopscenterprotobuf.ListMetricsProto");
+
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(e.data);
       reader.onloadend = (event) => {
-        // const dataResult = event.target.result;
         const dataResult = reader.result;
-        resolve(dataResult);
-      };
+        let received = new Uint8Array(dataResult);
+        let decoded = ListMetricsProto.decode(received);
+        console.log(decoded);
+    };
 
-      reader.onerror = (error) => {
-        reject(error);
-      };
+  });
 
-      reader.readAsText(e.data);
-    });
-
-    return promise;
+  // TODO : Create promise and return content
 
   }
 
