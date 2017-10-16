@@ -11,7 +11,8 @@ import {  MdMenuModule,
           MdGridListModule,
           MdIconModule,
           MdListModule,
-          MdProgressBarModule
+          MdProgressBarModule,
+          MdTabsModule,
         } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +47,8 @@ import { SettingsComponent } from './settings/settings.component';
     MdGridListModule,
     MdIconModule,
     MdListModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdTabsModule,
   ],
   providers: [MetricService],
   bootstrap: [AppComponent]
