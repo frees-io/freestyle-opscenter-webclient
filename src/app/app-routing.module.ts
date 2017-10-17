@@ -9,14 +9,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   // { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '', component: NavGridComponent },
-  { path: 'ms/:id', component: MsViewerComponent },
-  { path: 'settings', component: SettingsComponent },
+  { path: '', component: NavGridComponent, data: { breadcrumb: 'Home' } },
+  { path: 'ms/:id', component: MsViewerComponent, data: { breadcrumb: 'MS' } },
+  { path: 'settings', component: SettingsComponent, data: { breadcrumb: 'Settings' } },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

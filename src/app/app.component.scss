@@ -41,10 +41,8 @@
 
   .sidenav-content {
     display: flex;
+    flex-direction: column;
     height: 100%;
-    align-items: top;
-    justify-content: center;
-    text-align: center;
     overflow: auto;
   }
 
@@ -53,4 +51,3 @@
   }
 
 }
-

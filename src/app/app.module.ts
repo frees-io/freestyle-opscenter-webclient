@@ -26,6 +26,7 @@ import { MsViewerComponent } from './ms-viewer/ms-viewer.component';
 import { NavGridComponent } from './nav-grid/nav-grid.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SettingsComponent } from './settings/settings.component';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SettingsComponent } from './settings/settings.component';
     MsViewerComponent,
     NavGridComponent,
     PageNotFoundComponent,
-    SettingsComponent
+    SettingsComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,
