@@ -18,10 +18,6 @@
       {{ isCurrentlyListening() ? 'Stop' : 'Start' }} listening
     </button>
 
-    <button md-raised-button color="primary" (click)="addData()">
-      Add random data
-    </button>
-
     <div *ngIf="isCurrentlyListening()">
       <md-grid-list cols="2" rowHeight="fit">
         <md-grid-tile>
@@ -37,9 +33,20 @@
           <h2>{{ metric?.value | number:'1.7-7' }}</h2>
         </md-grid-tile>
         <md-grid-tile colspan="2">
-          <ngx-charts-line-chart #linechart [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
-            [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" [animations]="true" (select)="onSelect($event)">
+          <ngx-charts-line-chart 
+            [scheme]="colorScheme"
+            [results]="chartData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [autoScale]="autoScale"
+            [animations]="animations"
+            (select)="onSelect($event)">
           </ngx-charts-line-chart>
         </md-grid-tile>
       </md-grid-list>

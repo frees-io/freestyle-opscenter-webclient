@@ -28,15 +28,58 @@ export class MsViewerComponent implements OnInit {
             'Active Threads', 'Memory Load', 'Watt Consumption', 'Network Throughput',
             'Current Topics', 'Partitions', 'Request Count', 'Current Connections'];
 
+  // Start charts
+  chartData = [
+    {
+      'name': 'name',
+      'series': [
+        {
+          'name': '0',
+          'value': 0
+        }
+      ]
+    }
+  ];
+
+  // options
+  animations = false;
+  autoScale = false;
+  showXAxis = true;
+  showYAxis = true;
+  gradient = false;
+  showLegend = true;
+  showXAxisLabel = true;
+  xAxisLabel = 'Time';
+  showYAxisLabel = true;
+  yAxisLabel = 'Percentage %';
+  yAxisMinScale = 100;
+
+  colorScheme = {
+    domain: ['#673AB7', '#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+
   constructor(private route: ActivatedRoute,
               private metricService: MetricService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.microserviceId = params.get('id');
-      this.metrics = this.metricsPool.sort(() => Math.random() - 0.5).slice(0, 6);
+      this.metrics = this.metricsPool.sort(() => Math.random() - 0.5).slice(0, 5);
       this.tabGroup.selectedIndex = 0;
+      this.chartData[0].name = this.metrics[0];
     });
+  }
+
+  addData(value?: number) {
+    const nextEntry = +(this.chartData[0].series[this.chartData[0].series.length - 1]).name + 1;
+    const randomValue = (value) ? value : Math.random() * 100;
+    const newSeries = {
+      name: nextEntry.toString(),
+      value: randomValue
+    };
+    this.chartData[0].series.push(newSeries);
+    this.chartData[0].series = this.chartData[0].series.slice(-9, 10);
+    this.chartData = [...this.chartData];
   }
 
   startListening(): void {
@@ -46,7 +89,10 @@ export class MsViewerComponent implements OnInit {
     // this.subscription = this.metricService.getSubject('handshake')
     this.subscription = this.metricService.getSubject()
       .subscribe(
-        async (msg) => this.metric = new Metric(...(await msg).split(' '))
+        async (msg) => {
+          this.metric = new Metric(...(await msg).split(' '));
+          this.addData(this.metric.value);
+        }
       );
   }
 
