@@ -8,7 +8,7 @@ import { Metric } from 'app/shared/metric.model';
 import { MetricService } from 'app/services/metric.service';
 
 @Component({
-  selector: 'app-ms-viewer',
+  selector: 'frees-ms-viewer',
   templateUrl: './ms-viewer.component.html',
   styleUrls: ['./ms-viewer.component.scss']
 })

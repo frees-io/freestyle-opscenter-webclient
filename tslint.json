@@ -117,13 +117,21 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      [
+        "app",
+        "foca",
+        "frees"
+      ],
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      [
+        "app",
+        "foca",
+        "frees"
+      ],
       "kebab-case"
     ],
     "use-input-property-decorator": true,
