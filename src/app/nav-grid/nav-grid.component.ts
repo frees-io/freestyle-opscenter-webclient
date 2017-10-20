@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-nav-grid',
+  selector: 'frees-nav-grid',
   templateUrl: './nav-grid.component.html',
   styleUrls: ['./nav-grid.component.scss']
 })

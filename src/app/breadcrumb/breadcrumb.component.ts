@@ -3,7 +3,7 @@ import { Router, Event, ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } 
 
 
 @Component({
-  selector: 'app-breadcrumb',
+  selector: 'frees-breadcrumb',
   templateUrl: './breadcrumb.component.html',
   styleUrls: ['./breadcrumb.component.scss']
 })
