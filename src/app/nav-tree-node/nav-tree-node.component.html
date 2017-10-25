@@ -1,0 +1,40 @@
+<ng-container *ngTemplateOutlet="labelTemplate ? labelTemplate : data.link ? leafLabelTemplate : data.subs ? branchLabelTemplate : simpleLabelTemplate; context: {$implicit: this}">
+</ng-container>
+
+<ng-container *ngIf="data.subs">
+  <ul [ngClass]="{'hide': !isExpanded}">
+    <li *ngFor="let item of data.subs">
+      <frees-nav-tree-node [data]="item" [isExpanded]="false"></frees-nav-tree-node>
+    </li>
+  </ul>
+</ng-container>
+
+
+<ng-template #branchLabelTemplate let-implicit>
+  <div class="label" #label *ngIf="implicit.showLabel" (click)="implicit.toggle()">
+    <div class="ripple" md-ripple [mdRippleTrigger]="label"></div>
+    <span class="label-text">{{ implicit.data.label }}</span>
+    <button md-icon-button>
+      <md-icon class="label-icon">keyboard_arrow_down</md-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #leafLabelTemplate let-implicit>
+  <div class="label" #label *ngIf="implicit.showLabel"
+      routerLink="/ms/{{ implicit.data.link | number:'2.0-0' }}"
+      routerLinkActive="active">
+    <div class="ripple" md-ripple [mdRippleTrigger]="label"></div>
+    <span class="label-text">{{ implicit.data.label }}</span>
+    <button md-icon-button>
+      <md-icon class="label-icon">grain</md-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #simpleLabelTemplate let-implicit>
+  <div class="label deactivated" *ngIf="implicit.showLabel">
+    <div class="ripple" md-ripple [mdRippleTrigger]="label"></div>
+    <span class="label-text">{{ implicit.data.label }}</span>
+  </div>
+</ng-template>

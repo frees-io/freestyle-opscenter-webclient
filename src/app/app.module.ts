@@ -13,6 +13,7 @@ import {  MdMenuModule,
           MdListModule,
           MdProgressBarModule,
           MdTabsModule,
+          MdRippleModule
         } from '@angular/material';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -22,6 +23,7 @@ import { AppComponent } from './app.component';
 
 // Services
 import { MetricService } from './services/metric.service';
+import { NavTreeDataService } from './services/nav-tree-data.service';
 
 // Components
 import { MsViewerComponent } from './ms-viewer/ms-viewer.component';
@@ -29,6 +31,7 @@ import { NavGridComponent } from './nav-grid/nav-grid.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SettingsComponent } from './settings/settings.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     NavGridComponent,
     PageNotFoundComponent,
     SettingsComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    NavTreeNodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,9 +57,10 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     MdListModule,
     MdProgressBarModule,
     MdTabsModule,
+    MdRippleModule,
     NgxChartsModule
   ],
-  providers: [MetricService],
+  providers: [MetricService, NavTreeDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

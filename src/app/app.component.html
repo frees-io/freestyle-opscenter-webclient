@@ -24,15 +24,12 @@
   <md-sidenav-container class="sidenav-container">
 
       <md-sidenav #sidenav class="sidenav" mode="side" opened="true">
+
         <md-nav-list>
-          <h3 mat-subheader>Microservices</h3>
-          <md-list-item *ngFor="let link of links" routerLink="/ms/{{ link | number:'2.0-0'}}" routerLinkActive="active">
-            <span mdLine>Microservice MS{{ link | number:'2.0-0'}}</span>
-            <button md-icon-button>
-              <md-icon>grain</md-icon>
-            </button>
-          </md-list-item>
+          <h3 mat-subheader>{{ navTreeObject?.label }}</h3>
+          <frees-nav-tree-node *ngIf="navTreeObject" [data]="navTreeObject" [showLabel]="false"></frees-nav-tree-node>
         </md-nav-list>
+
       </md-sidenav>
 
       <section class="sidenav-content">
