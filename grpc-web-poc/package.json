@@ -1,0 +1,35 @@
+{
+  "name": "grpc-web-poc",
+  "version": "0.0.1",
+  "description": "This is a small proof of concept based on gRPC-web work to demonstrate how could any language based gRPC server and a TypeScript frontend work together",
+  "main": "",
+  "scripts": {
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install:proxy": "cd proxy && go build -o grpcwebproxy",
+    "install:all": "concurrently \"npm run install:client\" \"npm run install:server\" \"npm run install:proxy\"",
+    "postinstall": "npm run install:all",
+    "start:client": "cd client && npm start",
+    "start:client-tls": "cd client && npm run start:tls",
+    "start:server": "cd server && npm start",
+    "start:proxy": "cd proxy && ./run_proxy.sh",
+    "start:all": "concurrently --kill-others \"npm run start:server\" \"npm run start:proxy\" \"npm run start:client\"",
+    "start:tls": "concurrently --kill-others \"npm run start:server\" \"npm run start:proxy\" \"npm run start:client-tls\"",
+    "start": "npm run start:all"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "keywords": [
+    "grpc",
+    "grpc-web",
+    "typescript",
+    "protobuf",
+    "proto",
+    "node"
+  ],
+  "author": "Juan Valencia Calvellido <juanvalencia@calvellido.es>",
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": ""
+}
