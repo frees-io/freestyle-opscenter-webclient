@@ -2,8 +2,6 @@
 
 This project is an interactive visual web interface to operate and get metrics and data related with the different Freestyle microservices.
 
-![Forthcoming metrics viewer design (WIP)](https://github.com/frees-io/freestyle-opscenter-webclient/raw/ip-22-freestyle-opscenter-ui-design/design/freestyle-opscenter-ui-cassandra.png)
-
 ## Installation
 
 The project manage its dependencies through npm. It has been built with Angular 4.3, relying on RxJs 5.4, and it uses Webpack for build purposes. To get it installed you can run `npm install` or `yarn`.
