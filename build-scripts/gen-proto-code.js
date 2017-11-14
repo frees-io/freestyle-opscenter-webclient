@@ -79,8 +79,14 @@ const funcList = shell.ls('-l', path.join(originProtoPath, '*.proto'))
 
     const processProto = () => {
       return new Promise((resolve, reject) => {
-        const spinner = new ora(`Processing ${protoname}`).start();
-        shell.exec(execCommand, { async: true }, code => code ? reject(spinner.fail()) : resolve(spinner.succeed()));
+        const spinner = new ora({
+          spinner: 'dots2',
+          interval: 60,
+          color: 'magenta',
+          text: `${protoname} processing...`
+        }
+        ).start();
+        shell.exec(execCommand, { async: true }, code => code ? reject(spinner.fail(`${protoname} processed`)) : resolve(spinner.succeed(`${protoname} processed`)));
       });
     };
 
@@ -94,7 +100,11 @@ async function run () {
   if (funcList.length > 0) {
     shell.echo(`${funcList.length} proto files found`);
     for (const func of funcList) {
-      await func();
+      try {
+        await func();
+      } catch (e) {
+        shell.echo('Fetching operation couldn\'t be completed');
+      } 
     }
     shell.echo(`Generated code stored in ${path.join(destCodePath)}`);
   }
