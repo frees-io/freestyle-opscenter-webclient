@@ -18,6 +18,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "protofetch:custom": "build-scripts/fetch-proto.js",
+    "protofetch:metrics": "build-scripts/fetch-proto.js -i http://localhost:8080/proto/models/metrics",
+    "protofetch:microservices": "build-scripts/fetch-proto.js -i http://localhost:8080/proto/models/microservices",
+    "protofetch": "npm run protofetch:metrics --silent && npm run protofetch:microservices --silent",
     "protodef:custom": "build-scripts/gen-proto-code.js",
     "protodef": "build-scripts/gen-proto-code.js -i proto -o src/app/shared/proto"
   },
@@ -51,6 +55,7 @@
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "axios": "^0.17.1",
     "codelyzer": "~3.1.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

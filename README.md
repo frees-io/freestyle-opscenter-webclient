@@ -22,9 +22,23 @@ export const environment = {
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Proto files
+## Protocol buffers
 
-The JS proto code will be generated autocatically on the build command, if you want to control this step you can generate the JS code and TS definitions by running `npm run protodef`, which will search proto files in the `proto` directory, and will generate the code at `src/app/shared/proto` path. Also you can use the build script with `node build-scripts/gen-proto-code.js -i <proto_source_dir> -o <destination_dir>` or `npm run protodef:custom -- -i <proto_source_dir> -o <destination_dir>`.
+### Proto files fetching
+
+Right now two proto file locations are defined and specified as so on the project tasks through npm scripts, these are the `microservices` proto and `metrics` proto. They can be fetched by running `npm run protofetch:microservices` and `npm run protofetch:metrics`, running `npm run protofetch` will get you both. All these commands will get you the proto files at the `proto` path.
+
+Also you can use the build script with `node build-scripts/fetch-proto.js -s <proto-file-source-url> -o <destination-dir>` or `npm run protofetch:custom -- -i <proto-file-source-url> -o <destination-dir>`.
+
+`node build-scripts/fetch-proto.js --help` could help you on how to use the script.
+
+### Proto code generation
+
+The JS proto code will be generated automatically on the build command, if you want to control this step you can generate the JS code and TS definitions by running `npm run protodef`, which will search proto files in the `proto` directory, and will generate the code at `src/app/shared/proto` path.
+
+Also you can use the build script with `node build-scripts/gen-proto-code.js -i <proto-source-dir> -o <destination-dir>` or `npm run protodef:custom -- -i <proto-source-dir> -o <destination-dir>`.
+
+`node build-scripts/gen-proto-code.js --help` could help you on how to use the script.
 
 ## Code scaffolding
 
