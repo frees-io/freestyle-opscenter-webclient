@@ -104,7 +104,7 @@ async function run () {
       try {
         await func();
       } catch (e) {
-        shell.echo('Fetching operation couldn\'t be completed');
+        shell.echo('Code generation operation couldn\'t be completed');
       } 
     }
     shell.echo(`Generated code stored in ${path.join(destCodePath)}`);
