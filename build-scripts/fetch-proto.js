@@ -23,7 +23,7 @@ const argv = yargs
   .version(package.version).alias('version', 'v')
   .options({
     source: {
-      alias: ['s'],
+      alias: 's',
       description: '<proto-file-source-url>',
       requiresArg: true,
       default: originProtoPath,
@@ -33,8 +33,7 @@ const argv = yargs
           const urlObject = new URL(arg);
           return urlObject;
         } catch (e) {
-          // throw new Error(`Error: ${arg} is not a valid URL path`);
-          throw e;
+          throw new Error(`Error: ${arg} is not a valid URL path`);
         }
       }
     },
@@ -90,7 +89,6 @@ function fetchProto () {
     })
     .catch((error) => {
       spinner.fail(`Error connecting to: ${error.config.url}`);
-      // shell.echo(`Error connecting to: ${error.config.url}`);
       if (error.response) {
         // The request was made and the server responded with a status code out of range 2xx
         shell.echo(`${error.response.status} - ${error.response.statusText}`);
