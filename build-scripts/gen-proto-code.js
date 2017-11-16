@@ -23,7 +23,7 @@ const argv = yargs
   .version(package.version).alias('version', 'v')
   .options({
     input: {
-      alias: ['i'],
+      alias: 'i',
       description: '<input-proto-path>',
       requiresArg: true,
       default: originProtoPath,
