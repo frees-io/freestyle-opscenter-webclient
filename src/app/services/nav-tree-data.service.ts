@@ -32,7 +32,6 @@ export class NavTreeDataService {
          * and an additional check-and-wrap for ArrayBuffer (as either Buffer or Uint8Array), while certainly possible,
          * would usually be unnecessary overhead under node.js / in older browsers / where Uint8Array is used anyway.
          */
-        const test = data;
         const serializedData = new Uint8Array(data.arrayBuffer());
         const microserviceList = MicroserviceList.deserializeBinary(serializedData);
         return microserviceList.toObject();
