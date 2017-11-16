@@ -34,7 +34,9 @@ Also you can use the build script with `node build-scripts/fetch-proto.js -s <pr
 
 ### Proto code generation
 
-The JS proto code will be generated automatically on the build command, if you want to control this step you can generate the JS code and TS definitions by running `npm run protodef`, which will search proto files in the `proto` directory, and will generate the code at `src/app/shared/proto` path.
+If you want to control this step further, you can generate the JS code and TS definitions by running `npm run protodef`, which will search proto files in the `proto` directory, and will generate the code at `src/app/shared/proto` path.
+
+This requires the protocol buffers compiler to be already installed on the system. On GNU/Linux you can probably [manage](https://launchpad.net/ubuntu/+source/protobuf) this [through](https://launchpad.net/%7Emaarten-fonville/+archive/ubuntu/protobuf) some [package manager](https://pkgs.org/download/protobuf-compiler), or equivalent in [other OS](http://brewformulas.org/Protobuf). Otherwise, you can check Google [Protocol Buffers releases](https://github.com/google/protobuf/releases), and look for the `protoc` precompiled zipped binaries, extract and include them in your `PATH`, to have available the `protoc` command.
 
 Also you can use the build script with `node build-scripts/gen-proto-code.js -i <proto-source-dir> -o <destination-dir>` or `npm run protodef:custom -- -i <proto-source-dir> -o <destination-dir>`.
 

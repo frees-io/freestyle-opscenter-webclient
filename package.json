@@ -19,8 +19,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "protofetch:custom": "build-scripts/fetch-proto.js",
-    "protofetch:metrics": "build-scripts/fetch-proto.js -i http://localhost:8080/proto/models/metrics",
-    "protofetch:microservices": "build-scripts/fetch-proto.js -i http://localhost:8080/proto/models/microservices",
+    "protofetch:metrics": "build-scripts/fetch-proto.js -s http://localhost:8080/proto/models/metrics",
+    "protofetch:microservices": "build-scripts/fetch-proto.js -s http://localhost:8080/proto/models/microservices",
     "protofetch": "npm run protofetch:metrics --silent && npm run protofetch:microservices --silent",
     "protodef:custom": "build-scripts/gen-proto-code.js",
     "protodef": "build-scripts/gen-proto-code.js -i proto -o src/app/shared/proto"
@@ -44,7 +44,6 @@
     "d3": "^4.10.2",
     "lato-font": "^3.0.0",
     "material-design-icons": "^3.0.1",
-    "protobufjs": "~6.8.0",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
@@ -70,6 +69,7 @@
     "protractor": "~5.1.2",
     "shelljs": "^0.7.8",
     "ts-node": "~3.2.0",
+    "ts-protoc-gen": "^0.4.0",
     "tslint": "~5.3.2",
     "tslint-eslint-rules": "^4.1.1",
     "typescript": "2.4.2",
