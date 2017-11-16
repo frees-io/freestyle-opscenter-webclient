@@ -2,6 +2,8 @@
 
 This project is an interactive visual web interface to operate and get metrics and data related with the different Freestyle microservices.
 
+*This is a spike of the main project that uses `Protobuf.js` instead of `google-protobuf` to generate classes out from the proto descriptors and to serialize/deserialize messages at runtime. More info can be found on the [dedicated wiki page](https://github.com/frees-io/freestyle-opscenter-webclient/wiki/JavaScript-code-and-TypeScript-definitions-generation).*
+
 ## Installation
 
 The project manage its dependencies through npm. It has been built with Angular 4.3, relying on RxJs 5.4, and it uses Webpack for build purposes. To get it installed you can run `npm install` or `yarn`.
@@ -13,7 +15,8 @@ Generally available configuration parameters can be set per environment. To do s
 ```
 export const environment = {
   (...)
-  metricsEndpoint: 'ws://localhost:3000'
+  metricsEndpoint: 'ws://localhost:3000',
+  microservicesEndpoint: '//localhost:8080/microservices'
   (...)
 };
 ```
@@ -36,7 +39,7 @@ Also you can use the build script with `node build-scripts/fetch-proto.js -s <pr
 
 If you want to control this step further, you can generate the JS code and TS definitions by running `npm run protodef`, which will search proto files in the `proto` directory, and will generate the code at `src/app/shared/proto` path.
 
-This requires the protocol buffers compiler to be already installed on the system. On GNU/Linux you can probably [manage](https://launchpad.net/ubuntu/+source/protobuf) this [through](https://launchpad.net/%7Emaarten-fonville/+archive/ubuntu/protobuf) some [package manager](https://pkgs.org/download/protobuf-compiler), or equivalent in [other OS](http://brewformulas.org/Protobuf). Otherwise, you can check Google [Protocol Buffers releases](https://github.com/google/protobuf/releases), and look for the `protoc` precompiled zipped binaries, extract and include them in your `PATH`, to have available the `protoc` command.
+~~This requires the protocol buffers compiler to be already installed on the system. On GNU/Linux you can probably [manage](https://launchpad.net/ubuntu/+source/protobuf) this [through](https://launchpad.net/%7Emaarten-fonville/+archive/ubuntu/protobuf) some [package manager](https://pkgs.org/download/protobuf-compiler), or equivalent in [other OS](http://brewformulas.org/Protobuf). Otherwise, you can check Google [Protocol Buffers releases](https://github.com/google/protobuf/releases), and look for the `protoc` precompiled zipped binaries, extract and include them in your `PATH`, to have available the `protoc` command.~~
 
 Also you can use the build script with `node build-scripts/gen-proto-code.js -i <proto-source-dir> -o <destination-dir>` or `npm run protodef:custom -- -i <proto-source-dir> -o <destination-dir>`.
 

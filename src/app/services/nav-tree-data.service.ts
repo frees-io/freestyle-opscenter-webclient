@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { environment } from 'environments/environment';
-import { Microservice, MicroserviceList } from 'app/shared/proto/microservices_pb';
+import { Microservice, MicroserviceList } from 'app/shared/proto/microservices';
 
 
 @Injectable()
@@ -33,8 +33,8 @@ export class NavTreeDataService {
          * would usually be unnecessary overhead under node.js / in older browsers / where Uint8Array is used anyway.
          */
         const serializedData = new Uint8Array(data.arrayBuffer());
-        const microserviceList = MicroserviceList.deserializeBinary(serializedData);
-        return microserviceList.toObject();
+        const microserviceList = MicroserviceList.decode(serializedData);
+        return microserviceList;
       });
   }
 
