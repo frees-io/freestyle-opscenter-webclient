@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, ResponseContentType } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Operators
 import 'rxjs/add/operator/map';
@@ -12,10 +12,10 @@ import { Microservice, MicroserviceList } from 'app/shared/proto/microservices_p
 @Injectable()
 export class NavTreeDataService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   public getProto(): Observable<any> {
-    return this.http.get(environment.microservicesEndpoint, { responseType: ResponseContentType.ArrayBuffer })
+    return this.http.get(environment.microservicesEndpoint, { responseType: 'arraybuffer' })
       .map((data: any) => {
         /**
          * The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.
@@ -32,15 +32,14 @@ export class NavTreeDataService {
          * and an additional check-and-wrap for ArrayBuffer (as either Buffer or Uint8Array), while certainly possible,
          * would usually be unnecessary overhead under node.js / in older browsers / where Uint8Array is used anyway.
          */
-        const serializedData = new Uint8Array(data.arrayBuffer());
+        const serializedData = new Uint8Array(data);
         const microserviceList = MicroserviceList.deserializeBinary(serializedData);
         return microserviceList.toObject();
       });
   }
 
-  public getJSON(): Observable<any> {
-    return this.http.get('assets/nav-tree-data.json')
-      .map((data: any) => data.json());
+  public getJSON(): Observable<NavTreeData> {
+    return this.http.get<NavTreeData>('assets/nav-tree-data.json');
   }
 
 }
