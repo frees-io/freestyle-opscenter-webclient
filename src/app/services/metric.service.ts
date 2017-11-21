@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { webSocket } from 'rxjs/observable/dom/webSocket';
 import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
-// Operators
-import 'rxjs/add/observable/dom/webSocket';
 
 import { environment } from 'environments/environment';
 
@@ -63,7 +62,7 @@ export class MetricService {
    * @param handshake T
    */
   getSubject<T = string>(handshake?: T): WebSocketSubject<T> {
-    const subject: WebSocketSubject<T> = Observable.webSocket(this.wsc);
+    const subject: WebSocketSubject<T> = webSocket(this.wsc);
     if (handshake) {
       // If the websocket is “cold” we need to send a first message to get it started
       // const handshake = new Blob(['handshake'], {

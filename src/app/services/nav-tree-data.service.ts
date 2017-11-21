@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 // Operators
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { map } from 'rxjs/operators';
 
 import { environment } from 'environments/environment';
 import { Microservice, MicroserviceList } from 'app/shared/proto/microservices_pb';
@@ -15,8 +14,8 @@ export class NavTreeDataService {
   constructor(private http: HttpClient) { }
 
   public getProto(): Observable<any> {
-    return this.http.get(environment.microservicesEndpoint, { responseType: 'arraybuffer' })
-      .map((data: any) => {
+    return this.http.get(environment.microservicesEndpoint, { responseType: 'arraybuffer' }).pipe(
+      map((data: any) => {
         /**
          * The ArrayBuffer object is used to represent a generic, fixed-length raw binary data buffer.
          * You cannot directly manipulate the contents of an ArrayBuffer; instead, you create one of the
@@ -35,7 +34,7 @@ export class NavTreeDataService {
         const serializedData = new Uint8Array(data);
         const microserviceList = MicroserviceList.deserializeBinary(serializedData);
         return microserviceList.toObject();
-      });
+      }));
   }
 
   public getJSON(): Observable<NavTreeData> {
