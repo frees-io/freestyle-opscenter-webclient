@@ -9,7 +9,7 @@ import { Router, Event, ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd } 
 })
 export class BreadcrumbComponent {
 
-  private breadcrumbs: Array<string>;
+  public breadcrumbs: Array<string>;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((routeEvent) => { this.onRouteEvent(routeEvent); });
