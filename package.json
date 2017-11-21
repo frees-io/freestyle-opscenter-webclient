@@ -1,6 +1,6 @@
 {
   "name": "freestyle-opscenter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Juan Valencia Calvellido <juanvalencia@calvellido.es>",
   "license": "MIT",
   "keywords": [
@@ -15,6 +15,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod --build-optimizer --aot",
+    "serve": "ng serve",
+    "serve:prod": "ng serve --prod --build-optimizer --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
