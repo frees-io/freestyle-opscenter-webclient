@@ -1,8 +1,8 @@
-<md-tab-group #tabGroup>
-  <md-tab *ngFor="let tab of metrics" label="{{ tab }}">
+<mat-tab-group #tabGroup>
+  <mat-tab *ngFor="let tab of metrics" label="{{ tab }}">
     <ng-container *ngTemplateOutlet="content"></ng-container>
-  </md-tab>
-</md-tab-group>
+  </mat-tab>
+</mat-tab-group>
 
 
 <ng-template #content class="content">
@@ -14,25 +14,25 @@
       as they are received
     </p>
 
-    <button md-raised-button color="{{ isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="toggleListening()">
+    <button mat-raised-button color="{{ isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="toggleListening()">
       {{ isCurrentlyListening() ? 'Stop' : 'Start' }} listening
     </button>
 
     <div *ngIf="isCurrentlyListening()">
-      <md-grid-list cols="2" rowHeight="fit">
-        <md-grid-tile>
+      <mat-grid-list cols="2" rowHeight="fit">
+        <mat-grid-tile>
           <div>{{ metric?.microservice }}</div>
-        </md-grid-tile>
-        <md-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
           <div>{{ metric?.date | date:'y/MM/dd HH:mm:ss (Z)' }}</div>
-        </md-grid-tile>
-        <md-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
           <h2>{{ metric?.metric }}</h2>
-        </md-grid-tile>
-        <md-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
           <h2>{{ metric?.value | number:'1.7-7' }}</h2>
-        </md-grid-tile>
-        <md-grid-tile colspan="2">
+        </mat-grid-tile>
+        <mat-grid-tile colspan="2">
           <ngx-charts-line-chart 
             [scheme]="colorScheme"
             [results]="chartData"
@@ -48,9 +48,9 @@
             [animations]="animations"
             (select)="onSelect($event)">
           </ngx-charts-line-chart>
-        </md-grid-tile>
-      </md-grid-list>
-      <md-progress-bar mode="query"></md-progress-bar>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-progress-bar mode="query"></mat-progress-bar>
     </div>
 
   </div>

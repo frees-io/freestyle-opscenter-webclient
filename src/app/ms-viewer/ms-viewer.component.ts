@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { MdTabGroup } from '@angular/material';
+import { MatTabGroup } from '@angular/material/tabs';
 
 import { Metric } from 'app/shared/metric.model';
 import { MetricService } from 'app/services/metric.service';
@@ -14,7 +14,7 @@ import { MetricService } from 'app/services/metric.service';
 })
 export class MsViewerComponent implements OnInit {
 
-  @ViewChild(MdTabGroup) tabGroup: MdTabGroup;
+  @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
   title = 'metric streaming';
   microserviceId: string;

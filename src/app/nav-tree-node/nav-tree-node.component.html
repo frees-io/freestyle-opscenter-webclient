@@ -12,10 +12,10 @@
 
 <ng-template #branchLabelTemplate let-implicit>
   <div class="label" #label *ngIf="implicit.showLabel" (click)="implicit.toggle()">
-    <div class="ripple" md-ripple [mdRippleTrigger]="label"></div>
+    <div class="ripple" mat-ripple [matRippleTrigger]="label"></div>
     <span class="label-text">{{ implicit.data.label }}</span>
-    <button md-icon-button>
-      <md-icon class="label-icon">keyboard_arrow_down</md-icon>
+    <button mat-icon-button>
+      <mat-icon class="label-icon">keyboard_arrow_down</mat-icon>
     </button>
   </div>
 </ng-template>
@@ -24,17 +24,17 @@
   <div class="label" #label *ngIf="implicit.showLabel"
       routerLink="/ms/{{ implicit.data.link | number:'2.0-0' }}"
       routerLinkActive="active">
-    <div class="ripple" md-ripple [mdRippleTrigger]="label"></div>
+    <div class="ripple" mat-ripple [matRippleTrigger]="label"></div>
     <span class="label-text">{{ implicit.data.label }}</span>
-    <button md-icon-button>
-      <md-icon class="label-icon">grain</md-icon>
+    <button mat-icon-button>
+      <mat-icon class="label-icon">grain</mat-icon>
     </button>
   </div>
 </ng-template>
 
 <ng-template #simpleLabelTemplate let-implicit>
   <div class="label deactivated" *ngIf="implicit.showLabel">
-    <div class="ripple" md-ripple [mdRippleTrigger]="label"></div>
+    <div class="ripple" mat-ripple [matRippleTrigger]="label"></div>
     <span class="label-text">{{ implicit.data.label }}</span>
   </div>
 </ng-template>
