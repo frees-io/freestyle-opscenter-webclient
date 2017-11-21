@@ -1,41 +1,41 @@
 <section class="app mat-typography">
 
-  <md-toolbar color="primary" class="toolbar mat-elevation-z10">
+  <mat-toolbar color="primary" class="toolbar mat-elevation-z10">
     <div class="logo-container">
-      <button md-button class="toolbar-button" routerLink="/">
-        <md-icon>assessment</md-icon>
+      <button mat-button class="toolbar-button" routerLink="/">
+        <mat-icon>assessment</mat-icon>
       </button>
       <span>Freestyle Opscenter</span>
     </div>
-    <button md-button class="toolbar-button" (click)="sidenav.toggle()">
-      <md-icon>menu</md-icon>
+    <button mat-button class="toolbar-button" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
     </button>
     <div class="fill-space"></div>
-    <button md-button class="toolbar-button" routerLink="settings">
-      <md-icon>settings</md-icon>
+    <button mat-button class="toolbar-button" routerLink="settings">
+      <mat-icon>settings</mat-icon>
     </button>
     <div class="user mat-body-2">
-      <md-icon>person</md-icon>
+      <mat-icon>person</mat-icon>
       <span>Testing user</span>
-      <md-icon>keyboard_arrow_down</md-icon>
+      <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
-  </md-toolbar>
+  </mat-toolbar>
 
-  <md-sidenav-container class="sidenav-container">
+  <mat-sidenav-container class="sidenav-container">
 
-      <md-sidenav #sidenav class="sidenav" mode="side" opened="true">
+      <mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
 
-        <md-nav-list>
+        <mat-nav-list>
           <h3 mat-subheader>{{ navTreeObject?.label }}</h3>
           <frees-nav-tree-node *ngIf="navTreeObject" [data]="navTreeObject" [showLabel]="false"></frees-nav-tree-node>
-        </md-nav-list>
+        </mat-nav-list>
 
-      </md-sidenav>
+      </mat-sidenav>
 
       <section class="sidenav-content">
         <frees-breadcrumb></frees-breadcrumb>
         <router-outlet></router-outlet>
       </section>
 
-  </md-sidenav-container>
+  </mat-sidenav-container>
 </section>
