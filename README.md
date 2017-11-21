@@ -4,7 +4,7 @@ This project is an interactive visual web interface to operate and get metrics a
 
 ## Installation
 
-The project manage its dependencies through npm. It has been built with Angular 4.3, relying on RxJs 5.4, and it uses Webpack for build purposes. To get it installed you can run `npm install` or `yarn`.
+The project manage its dependencies through npm. It has been built with Angular 5, relying on RxJs 5.5, and it uses Webpack for build purposes. To get it installed you can run `npm install` or `yarn`.
 
 ## Configuration
 
