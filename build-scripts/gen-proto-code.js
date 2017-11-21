@@ -77,13 +77,6 @@ const funcList = shell.ls('-l', path.join(originProtoPath, '*.proto'))
     const execCommand = `pbjs -t static-module -o ${jsCodeFilePath} -w commonjs ${file.name} &  
                           pbts -o ${tsCodeFilePath} ${jsCodeFilePath}`;
 
-    // const execCommand = `protoc\
-    //                       --plugin=protoc-gen-ts=${workingDir}/node_modules/.bin/protoc-gen-ts\
-    //                       --js_out=import_style=commonjs,binary:${destCodePath}\
-    //                       --ts_out=service=true:${destCodePath}\
-    //                       --proto_path=${originProtoPath}\
-    //                       ${file.name}`;
-
     const processProto = () => {
       return new Promise((resolve, reject) => {
         const spinner = new ora({

@@ -70,3 +70,12 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+/**
+ * Protobuf.js needs Long library to be explicitely assigned
+ * See https://github.com/dcodeIO/protobuf.js#browserify-integration
+ */
+import * as protobuf from 'protobufjs/minimal';
+import * as Long from 'long';
+protobuf.util.Long = Long;
+protobuf.configure();
