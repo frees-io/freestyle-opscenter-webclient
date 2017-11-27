@@ -1,4 +1,7 @@
-<h2>Settings</h2>
+<button mat-raised-button color="primary" class="floating-top-right" routerLink="/new">
+  <mat-icon>add</mat-icon>
+  <span>Add microservice</span>
+</button>
 
 <mat-grid-list class="tile-list" cols="3" rowHeight="fit">
   <mat-grid-tile class="tile" *ngFor="let link of links">
@@ -11,7 +14,6 @@
 
   </mat-grid-tile>
 </mat-grid-list>
-
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item>

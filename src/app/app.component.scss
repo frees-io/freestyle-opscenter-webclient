@@ -40,10 +40,16 @@
   }
 
   .sidenav-content {
+    background-color: #FFF;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    margin: 32px;
     overflow: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   .mat-subheader {
