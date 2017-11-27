@@ -1,0 +1,17 @@
+<form [formGroup]="newMsForm" class="form-group" (ngSubmit)="onSubmit()" novalidate>
+  <mat-form-field class="form-field">
+    <input matInput type="text" formControlName="name" placeholder="Name">
+    <mat-error *ngIf="newMsForm.get('name').hasError('required')">
+      Name value is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field  class="form-field">
+    <input matInput type="text" formControlName="node" placeholder="Node">
+    <mat-error *ngIf="newMsForm.get('node').hasError('required')">
+      Node value is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="newMsForm.invalid">Add microservice</button>
+  </div>
+</form>
