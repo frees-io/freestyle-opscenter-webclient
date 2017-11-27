@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 // Presentational modules
@@ -13,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
 import { MatRippleModule } from '@angular/material/core';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -31,6 +33,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SettingsComponent } from './settings/settings.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
+import { AddNewMsComponent } from './add-new-ms/add-new-ms.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +44,12 @@ import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
     SettingsComponent,
     BreadcrumbComponent,
     NavTreeNodeComponent,
+    AddNewMsComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     MatMenuModule,
@@ -56,6 +61,7 @@ import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
     MatListModule,
     MatProgressBarModule,
     MatTabsModule,
+    MatInputModule,
     MatRippleModule,
     NgxChartsModule
   ],
