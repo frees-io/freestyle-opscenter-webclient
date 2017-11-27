@@ -55,7 +55,7 @@ export class MsViewerComponent implements OnInit {
   yAxisMinScale = 100;
 
   colorScheme = {
-    domain: ['#673AB7', '#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#04B3B3', '#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
   constructor(private route: ActivatedRoute,
