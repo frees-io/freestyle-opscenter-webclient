@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatRippleModule } from '@angular/material/core';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -34,6 +35,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
 import { AddNewMsComponent } from './add-new-ms/add-new-ms.component';
+import { AddNewMsDialogComponent } from './add-new-ms/add-new-ms-dialog.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { AddNewMsComponent } from './add-new-ms/add-new-ms.component';
     BreadcrumbComponent,
     NavTreeNodeComponent,
     AddNewMsComponent,
+    AddNewMsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +65,12 @@ import { AddNewMsComponent } from './add-new-ms/add-new-ms.component';
     MatProgressBarModule,
     MatTabsModule,
     MatInputModule,
+    MatDialogModule,
     MatRippleModule,
     NgxChartsModule
+  ],
+  entryComponents: [
+    AddNewMsDialogComponent
   ],
   providers: [MetricService, NavTreeDataService],
   bootstrap: [AppComponent]

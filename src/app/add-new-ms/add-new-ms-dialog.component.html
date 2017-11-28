@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>New microservice added</h2>
+<mat-dialog-content>
+  <div>Its data is as follows:</div>
+  <div>{{ data | json }}</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Accept</button>
+</mat-dialog-actions>
