@@ -19,8 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "frees",
       "styles": [
-        "styles.scss",
-        "freestyle-theme.scss"
+        "styles/styles.scss",
+        "styles/freestyle-theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
