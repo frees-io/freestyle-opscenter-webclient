@@ -1,6 +1,6 @@
 <section class="app mat-typography">
 
-  <mat-toolbar color="primary" class="toolbar mat-elevation-z10">
+  <mat-toolbar color="primary" class="toolbar">
     <div class="logo-container">
       <button mat-button class="toolbar-button" routerLink="/">
         <mat-icon>assessment</mat-icon>
@@ -26,7 +26,6 @@
       <mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
 
         <mat-nav-list>
-          <h3 mat-subheader>{{ navTreeObject?.label }}</h3>
           <frees-nav-tree-node *ngIf="navTreeObject" [data]="navTreeObject" [showLabel]="false"></frees-nav-tree-node>
         </mat-nav-list>
 

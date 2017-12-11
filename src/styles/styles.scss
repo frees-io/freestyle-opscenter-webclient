@@ -1,11 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~lato-font/css/lato-font.css';
 @import '~material-design-icons/iconfont/material-icons.css';
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/theming';
 
 $custom-typography: mat-typography-config(
-  $font-family: 'Lato Medium'
+    $font-family: 'Lato Medium'
 );
 
 //Override Roboto Angular Material font, including mat-base-typography and all components

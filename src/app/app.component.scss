@@ -1,9 +1,18 @@
+@import 'src/styles/freestyle-palette';
+
 .app {
   height: 100%;
   overflow: hidden;
 }
 
 .toolbar {
+  // Here we are using a z-index to create a new stacking context. We need for the shadow
+  // to be shown, as the mat-sidenav-container will create one too.
+  // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
+  position: relative;
+  z-index: 2;
+  // Using a transparent shadow to create a smoother effect over the sidebar
+  box-shadow: 0px 3px 1px rgba(0,0,0,.2);
   padding: 0;
 
   .logo-container {
@@ -31,19 +40,43 @@
   }
 }
 
+/**
+ * Ideally we would be editing these styles as part of the whole theme, but
+ * Material Sidenav doesn't decouple the sidenav from the rest of the component.
+ */
 .sidenav-container {
+  background-color: mat-color($freestyle-light-background, background);
   height: calc(100% - 64px);
 
+  /**
+   * Sadly, we need to be overwriting most styles under this class, as the
+   * way Angular Material themes work they are defined in a global way, thus
+   * letting no other option to override them specifically in this case.
+   * ng-deep (/deep/, >>>) is also needed as the encapsulation will prevent
+   * our styling to bleed inside the inner components, e.g. the nav-tree-node, ripple
+   */
   .sidenav {
+    background-color: mat-color($freestyle-dark-background, dialog);
+    color: mat-color($freestyle-dark-foreground, secondary-text);
     padding: 16px;
     width: 320px;
+
+    ::ng-deep {
+      .active {
+        color: mat-color($freestyle-dark-foreground, text);
+      }
+
+      .ripple .mat-ripple-element {
+        background-color: rgba(map-get($mat-freestyle-blue, 400), 0.3);
+      }
+    }
   }
 
   .sidenav-content {
-    background-color: #FFF;
+    background-color: mat-color($freestyle-light-background, card);
     display: flex;
     flex-direction: column;
-    margin: 32px;
+    margin: 24px;
     overflow: auto;
     position: absolute;
     top: 0;
