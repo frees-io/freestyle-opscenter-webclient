@@ -25,7 +25,9 @@
     "protofetch:microservices": "build-scripts/fetch-proto.js -s http://localhost:8080/proto/models/microservices",
     "protofetch": "npm run protofetch:metrics --silent && npm run protofetch:microservices --silent",
     "protodef:custom": "build-scripts/gen-proto-code.js",
-    "protodef": "build-scripts/gen-proto-code.js -i proto -o src/app/shared/proto"
+    "protodef": "build-scripts/gen-proto-code.js -i proto -o src/app/shared/proto",
+    "mock-server:install": "cd mock-server && npm install",
+    "mock-server": "cd mock-server && npm start"
   },
   "private": true,
   "dependencies": {
