@@ -1,0 +1,21 @@
+{
+  "name": "freestyle-opscenter-mock-server",
+  "version": "0.0.1",
+  "description": "A simple websocket mock server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server",
+    "websocket",
+    "websockets"
+  ],
+  "author": "Juan Valencia Calvellido",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-ws": "^3.0.0"
+  }
+}
