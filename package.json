@@ -1,8 +1,9 @@
 {
   "name": "freestyle-opscenter",
   "version": "0.0.2",
+  "description": "An interactive visual web interface to operate and get metrics and data related with different Freestyle microservices.",
   "author": "Juan Valencia Calvellido <juanvalencia@calvellido.es>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "freestyle",
     "opscenter",
