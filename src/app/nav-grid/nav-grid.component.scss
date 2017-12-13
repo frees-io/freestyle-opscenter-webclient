@@ -8,11 +8,20 @@
   flex: 1 1 auto;
 
   .tile {
-    transition: background-color .3s ease;
 
-    &:hover {
-      background-color: rgba(0,0,0,.05);
-      cursor: pointer;
+    // We need this ng-deep to be able to change the flex-direction
+    // property of the tiles inner content, as it's not configurable
+    ::ng-deep .mat-figure {
+      flex-direction: column;
+    }
+
+    .tile-link {
+      transition: color .3s ease;
+    
+      &:hover {
+        color: rgba(0,0,0,.75);
+        cursor: pointer;
+      }
     }
   }
 }

@@ -19,37 +19,21 @@
     </button>
 
     <div *ngIf="isCurrentlyListening()">
-      <mat-grid-list cols="2" rowHeight="fit">
-        <mat-grid-tile>
-          <div>{{ metric?.microservice }}</div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <div>{{ metric?.date | date:'y/MM/dd HH:mm:ss (Z)' }}</div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <h2>{{ metric?.metric }}</h2>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          <h2>{{ metric?.value | number:'1.7-7' }}</h2>
-        </mat-grid-tile>
-        <mat-grid-tile colspan="2">
-          <ngx-charts-line-chart 
-            [scheme]="colorScheme"
-            [results]="chartData"
-            [gradient]="gradient"
-            [xAxis]="showXAxis"
-            [yAxis]="showYAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [autoScale]="autoScale"
-            [animations]="animations"
-            (select)="onSelect($event)">
-          </ngx-charts-line-chart>
-        </mat-grid-tile>
-      </mat-grid-list>
+        <ngx-charts-line-chart 
+          [scheme]="colorScheme"
+          [results]="chartData"
+          [gradient]="gradient"
+          [xAxis]="showXAxis"
+          [yAxis]="showYAxis"
+          [legend]="showLegend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [autoScale]="autoScale"
+          [animations]="animations"
+          (select)="onSelect($event)">
+        </ngx-charts-line-chart>
       <mat-progress-bar mode="query"></mat-progress-bar>
     </div>
 
