@@ -6,7 +6,7 @@
 }
 
 .toolbar {
-  // Here we are using a z-index to create a new stacking context. We need for the shadow
+  // Here we are using a z-index to create a new stacking context. We need it for the shadow
   // to be shown, as the mat-sidenav-container will create one too.
   // See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
   position: relative;
@@ -58,7 +58,6 @@
   .sidenav {
     background-color: mat-color($freestyle-dark-background, dialog);
     color: mat-color($freestyle-dark-foreground, secondary-text);
-    padding: 16px;
     width: 320px;
 
     ::ng-deep {

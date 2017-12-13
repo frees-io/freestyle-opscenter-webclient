@@ -2,24 +2,21 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  &:first-child{
-    padding-right: 16px;
-  }
 }
 
 li {
-  font-size: 16px;
-  padding: 0 0 0 16px;
+  font-size: calc(100% + 16px);
 }
 
 .label {
+  align-items: center;
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  box-sizing: border-box;
   height: 48px;
   outline: none;
+  padding: 0 0 0 1em;
   position: relative;
 
   &:hover {
@@ -27,7 +24,7 @@ li {
   }
 
   &.active {
-    box-shadow: -4px 0 0;
+    box-shadow: inset 2px 0 0;
   }
 
   &.deactivated {
@@ -37,6 +34,7 @@ li {
   }
 
   .label-text {
+    font-size: 16px;
     width: 100%;
   }
 }
@@ -53,4 +51,8 @@ li {
 
 .hide {
   display: none;
+}
+
+.highlight-tree .highlight-tree {
+  background-color: rgba(255,255,255,.02);
 }

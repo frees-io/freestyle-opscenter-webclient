@@ -2,7 +2,7 @@
 </ng-container>
 
 <ng-container *ngIf="data.subs">
-  <ul [ngClass]="{'hide': !isExpanded}">
+  <ul [ngClass]="{'hide': !isExpanded, 'highlight-tree': isExpanded}">
     <li *ngFor="let item of data.subs">
       <frees-nav-tree-node [data]="item" [isExpanded]="false"></frees-nav-tree-node>
     </li>
@@ -11,11 +11,15 @@
 
 
 <ng-template #branchLabelTemplate let-implicit>
-  <div class="label" #label *ngIf="implicit.showLabel" (click)="implicit.toggle()">
+  <div class="label" [ngClass]="{'highlight-label': isExpanded}"
+      #label *ngIf="implicit.showLabel" (click)="implicit.toggle()">
     <div class="ripple" mat-ripple [matRippleTrigger]="label"></div>
     <span class="label-text">{{ implicit.data.label }}</span>
     <button mat-icon-button>
-      <mat-icon class="label-icon">keyboard_arrow_down</mat-icon>
+      <mat-icon class="label-icon">
+        <span *ngIf="implicit.isExpanded">keyboard_arrow_down</span>
+        <span *ngIf="!implicit.isExpanded">keyboard_arrow_right</span>
+      </mat-icon>
     </button>
   </div>
 </ng-template>
