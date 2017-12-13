@@ -97,7 +97,6 @@ export class MsViewerComponent implements OnInit {
      * string type parameter to be able to acces the split property, because
      * after the mergeAll we are getting a string and not a Promise<string>.
      */
-    // this.subscription = this.metricService.getSubject('handshake')
     this.subscription = this.metricService.getSubject().pipe(
       mergeAll(1),
       map(_ => new Metric(..._.split(' '))),
