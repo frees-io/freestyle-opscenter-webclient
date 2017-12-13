@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+// Operators
+import { filter, map, mergeAll } from 'rxjs/operators';
 
 import { MatTabGroup } from '@angular/material/tabs';
 
@@ -82,18 +84,31 @@ export class MsViewerComponent implements OnInit {
     this.chartData = [...this.chartData];
   }
 
-  startListening(): void {
+  startListening(microserviceName: string): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    /**
+     * By using mergeAll what we are achieving is the conversion from the
+     * higher-order Observable into a first-order Observable which concurrently
+     * delivers all values that are emitted on the inner Observables, which in
+     * our case are Promises coming from the FileReader object.
+     * Also, is needed to note that we are typing the getSubject function with a
+     * string type parameter to be able to acces the split property, because
+     * after the mergeAll we are getting a string and not a Promise<string>.
+     */
     // this.subscription = this.metricService.getSubject('handshake')
-    this.subscription = this.metricService.getSubject()
-      .subscribe(
-        async (msg) => {
-          this.metric = new Metric(...(await msg).split(' '));
-          this.addData(this.metric.value);
-        }
-      );
+    this.subscription = this.metricService.getSubject().pipe(
+      mergeAll(1),
+      map(_ => new Metric(..._.split(' '))),
+      filter(metric => metric.microservice === microserviceName)
+    )
+    .subscribe(
+      (metric) => {
+        this.metric = metric;
+        this.addData(this.metric.value);
+      }
+    );
   }
 
   isCurrentlyListening(): boolean {
@@ -101,7 +116,7 @@ export class MsViewerComponent implements OnInit {
   }
 
   toggleListening(): void {
-    this.isCurrentlyListening() ? this.stopListening() : this.startListening();
+    this.isCurrentlyListening() ? this.stopListening() : this.startListening('microservice1');
   }
 
   stopListening(): void {

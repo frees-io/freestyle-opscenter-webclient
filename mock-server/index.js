@@ -25,8 +25,14 @@ app.ws('/metrics', function (ws, req) {
 
 setInterval(function () {
   expressWs.getWss('/metrics').clients.forEach(function (client) {
-    var blob = new Buffer('microservice1 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
-    client.send(blob);
+    var blob1 = new Buffer('microservice1 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
+    var blob2 = new Buffer('microservice2 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
+    var blob3 = new Buffer('microservice3 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
+    var blob4 = new Buffer('microservice4 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
+    client.send(blob1);
+    client.send(blob2);
+    client.send(blob3);
+    client.send(blob4);
   });
 }, 2000);
 
