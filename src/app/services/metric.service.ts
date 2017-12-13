@@ -33,6 +33,8 @@ export class MetricService {
   private wscResultSelector(e: MessageEvent): any {
     const reader = new FileReader();
 
+    // TODO: Wrap this FileReader into an Observable instead
+    // of a Promise to a more suited chaining later on
     const promise = new Promise<string>((resolve, reject) => {
       reader.onloadend = (event) => {
         // const dataResult = event.target.result;
@@ -64,7 +66,7 @@ export class MetricService {
   getSubject<T = string>(handshake?: T): WebSocketSubject<T> {
     const subject: WebSocketSubject<T> = webSocket(this.wsc);
     if (handshake) {
-      // If the websocket is “cold” we need to send a first message to get it started
+      // If the websocket is “cold” we need to send an initial message to get it started
       // const handshake = new Blob(['handshake'], {
       //   type: 'text/plain'
       // });
