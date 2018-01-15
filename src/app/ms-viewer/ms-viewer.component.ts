@@ -7,7 +7,7 @@ import { filter, map, mergeAll } from 'rxjs/operators';
 // TODO: Unbind tag selector from MS viewer
 import { MatTabGroup } from '@angular/material/tabs';
 
-import { Metric } from 'app/shared/metric.model';
+import { Metric } from 'app/shared/proto/metrics_pb';
 import { MetricService } from 'app/services/metric.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class MsViewerComponent implements OnInit {
 
   title = 'metric streaming';
   microserviceId: string;
-  metric: Metric;
+  metric: Metric.AsObject;
   subscription: Subscription;
 
   // This is representing the available metrics for this microservice
@@ -102,6 +102,7 @@ export class MsViewerComponent implements OnInit {
      */
     this.subscription = this.metricService.getSubject().pipe(
       mergeAll(1),
+      map(_ => _.toObject()),
       filter(metric => metric.microservice === `microservice${microserviceName}`)
     )
     .subscribe(

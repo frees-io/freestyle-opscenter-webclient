@@ -1,16 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { webSocket } from 'rxjs/observable/dom/webSocket';
-import { WebSocketSubject } from 'rxjs/observable/dom/WebSocketSubject';
+import { WebSocketSubject, WebSocketSubjectConfig } from 'rxjs/observable/dom/WebSocketSubject';
+// Operators
+import { of } from 'rxjs/observable/of';
 
 import { environment } from 'environments/environment';
+import { Metric } from 'app/shared/proto/metrics_pb';
+
 
 @Injectable()
 export class MetricService {
 
   private wsc = {
     url: environment.metricsEndpoint,
-    resultSelector: this.wscResultSelector
+    resultSelector: this.wscResultSelector,
+    /**
+     * Here's the thing, WebSocketSubjectConfig's binaryType is not a string,
+     * it is instead a String Literal Type (binaryType?: 'blob' | 'arraybuffer')
+     * https://github.com/Microsoft/TypeScript/pull/5185
+     * “A string literal type can be considered a subtype of the string type.
+     * This means that a string literal type is assignable to a plain string,
+     * but not vice-versa.”
+     * Then, we need to cast our string type to its proper type.
+     */
+    binaryType: 'arraybuffer' as WebSocketSubjectConfig['binaryType']
   };
 
   constructor() { }
@@ -31,26 +45,10 @@ export class MetricService {
    * @param e: MessageEvent
    */
   private wscResultSelector(e: MessageEvent): any {
-    const reader = new FileReader();
+    const serializedData = new Uint8Array(e.data);
+    const metric = Metric.deserializeBinary(e.data);
 
-    // TODO: Wrap this FileReader into an Observable instead
-    // of a Promise to a more suited chaining later on
-    const promise = new Promise<string>((resolve, reject) => {
-      reader.onloadend = (event) => {
-        // const dataResult = event.target.result;
-        const dataResult = reader.result;
-        resolve(dataResult);
-      };
-
-      reader.onerror = (error) => {
-        reject(error);
-      };
-
-      reader.readAsText(e.data);
-    });
-
-    return promise;
-
+    return of(metric);
   }
 
   /**
@@ -63,7 +61,7 @@ export class MetricService {
    *
    * @param handshake T
    */
-  getSubject<T = string>(handshake?: T): WebSocketSubject<T> {
+  getSubject<T = Metric>(handshake?: T): WebSocketSubject<T> {
     const subject: WebSocketSubject<T> = webSocket(this.wsc);
     if (handshake) {
       // If the websocket is “cold” we need to send an initial message to get it started
