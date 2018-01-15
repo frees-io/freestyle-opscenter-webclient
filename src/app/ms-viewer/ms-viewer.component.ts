@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 // Operators
 import { filter, map, mergeAll } from 'rxjs/operators';
 
+// TODO: Unbind tag selector from MS viewer
 import { MatTabGroup } from '@angular/material/tabs';
 
 import { Metric } from 'app/shared/metric.model';
@@ -16,6 +17,7 @@ import { MetricService } from 'app/services/metric.service';
 })
 export class MsViewerComponent implements OnInit {
 
+  @Input() id?: string;
   @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
   title = 'metric streaming';
@@ -65,10 +67,11 @@ export class MsViewerComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.microserviceId = params.get('id');
+      this.microserviceId = this.id ? this.id : params.get('id');
       this.metrics = this.metricsPool.sort(() => Math.random() - 0.5).slice(0, 5);
-      this.tabGroup.selectedIndex = 0;
       this.chartData[0].name = this.metrics[0];
+      this.tabGroup.selectedIndex = 0;
+      this.startListening(this.microserviceId);
     });
   }
 
@@ -99,8 +102,7 @@ export class MsViewerComponent implements OnInit {
      */
     this.subscription = this.metricService.getSubject().pipe(
       mergeAll(1),
-      map(_ => new Metric(..._.split(' '))),
-      filter(metric => metric.microservice === microserviceName)
+      filter(metric => metric.microservice === `microservice${microserviceName}`)
     )
     .subscribe(
       (metric) => {
@@ -115,7 +117,7 @@ export class MsViewerComponent implements OnInit {
   }
 
   toggleListening(): void {
-    this.isCurrentlyListening() ? this.stopListening() : this.startListening('microservice1');
+    this.isCurrentlyListening() ? this.stopListening() : this.startListening(this.microserviceId);
   }
 
   stopListening(): void {

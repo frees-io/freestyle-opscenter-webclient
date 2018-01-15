@@ -26,7 +26,7 @@
 
 <ng-template #leafLabelTemplate let-implicit>
   <div class="label" #label *ngIf="implicit.showLabel"
-      routerLink="/ms/{{ implicit.data.link | number:'2.0-0' }}"
+      routerLink="/ms/{{ implicit.data.link | number:'1.0-0' }}"
       routerLinkActive="active">
     <div class="ripple" mat-ripple [matRippleTrigger]="label"></div>
     <span class="label-text">{{ implicit.data.label }}</span>
