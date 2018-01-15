@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 var expressWs = require('express-ws')(app);
+// Proto file JS definition
+var Metric = require('../src/app/shared/proto/metrics_pb').Metric;
+
 
 app.use(function (req, res, next) {
   console.log('middleware');
@@ -25,14 +28,14 @@ app.ws('/metrics', function (ws, req) {
 
 setInterval(function () {
   expressWs.getWss('/metrics').clients.forEach(function (client) {
-    var blob1 = new Buffer('microservice1 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
-    var blob2 = new Buffer('microservice2 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
-    var blob3 = new Buffer('microservice3 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
-    var blob4 = new Buffer('microservice4 ' + Date.now() + ' cassandra.topics ' + (Math.random() * 100));
-    client.send(blob1);
-    client.send(blob2);
-    client.send(blob3);
-    client.send(blob4);
+    var metric1 = new Metric(['metric', 'microservice1', 'node', (Math.random() * 100), Date.now()]).serializeBinary();
+    var metric2 = new Metric(['metric', 'microservice2', 'node', (Math.random() * 100), Date.now()]).serializeBinary();
+    var metric3 = new Metric(['metric', 'microservice3', 'node', (Math.random() * 100), Date.now()]).serializeBinary();
+    var metric4 = new Metric(['metric', 'microservice4', 'node', (Math.random() * 100), Date.now()]).serializeBinary();
+    client.send(metric1);
+    client.send(metric2);
+    client.send(metric3);
+    client.send(metric4);
   });
 }, 2000);
 
