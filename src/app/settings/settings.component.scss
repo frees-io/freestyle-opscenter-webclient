@@ -1,18 +1,3 @@
-:host {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  width: 100%;
-}
-
-.tile-list {
-  flex: 1 1 auto;
-
-  .tile {
-    transition: background-color .3s ease;
-  }
-}
-
 .floating-top-right {
   position: absolute;
   right: 0;

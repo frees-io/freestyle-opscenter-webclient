@@ -3,25 +3,7 @@
   <span>Add microservice</span>
 </button>
 
-<mat-grid-list class="tile-list" cols="3" rowHeight="fit">
-  <mat-grid-tile class="tile" *ngFor="let link of links">
-
-    <h2>Microservice MS{{ link | number:'2.0-0'}}</h2>
-
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-
-  </mat-grid-tile>
-</mat-grid-list>
-
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>mode_edit</mat-icon>
-    <span>Edit</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>delete</mat-icon>
-    <span>Delete</span>
-  </button>
-</mat-menu>
+<mat-list>
+  <frees-settings-item *ngFor="let microservice of microserviceList"
+      [microservice]="microservice"></frees-settings-item>
+</mat-list>

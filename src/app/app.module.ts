@@ -36,6 +36,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
 import { AddNewMsComponent } from './add-new-ms/add-new-ms.component';
 import { AddNewMsDialogComponent } from './add-new-ms/add-new-ms-dialog.component';
+import { SettingsItemComponent } from './settings-item/settings-item.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AddNewMsDialogComponent } from './add-new-ms/add-new-ms-dialog.componen
     BreadcrumbComponent,
     NavTreeNodeComponent,
     AddNewMsComponent,
-    AddNewMsDialogComponent
+    AddNewMsDialogComponent,
+    SettingsItemComponent
   ],
   imports: [
     BrowserModule,
