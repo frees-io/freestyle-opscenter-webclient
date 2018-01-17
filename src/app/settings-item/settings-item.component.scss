@@ -1,0 +1,27 @@
+@import 'src/styles/freestyle-palette';
+
+:host {
+    display: block;
+    border-bottom: solid 1px mat-color($freestyle-light-foreground, divider);
+    
+    &:first-of-type {
+      border-top: solid 1px #C8C8C8;
+    }
+
+    &:hover {
+      background-color: mat-color($freestyle-light-background, background);
+    }
+}
+
+.delete-button {
+  color: mat-color($freestyle-light-foreground, divider);
+}
+
+.edit-button {
+  background-color: mat-color($freestyle-light-foreground, dividers);
+  color: mat-color($freestyle-light-foreground, secondary-text);
+  font-size: 12px;
+  line-height: initial;
+  min-width: initial;
+  padding: 4px;
+}

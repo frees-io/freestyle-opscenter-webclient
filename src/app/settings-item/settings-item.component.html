@@ -1,0 +1,27 @@
+<mat-list-item (mouseenter)="onHover()" (mouseleave)="onHover()">
+
+    <mat-icon matListIcon color="primary">folder</mat-icon>
+    <span matLine>
+      Microservice MS{{ microservice | number:'2.0-0'}}
+      <button [@itemState]="state" class="edit-button" mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+        Edit
+      </button>
+    </span>
+
+    <button class="delete-button" mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+
+</mat-list-item>
+
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>mode_edit</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>
