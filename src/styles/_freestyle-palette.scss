@@ -114,7 +114,7 @@ $freestyle-dark-background: (
 $freestyle-light-foreground: (
   base:              map_get($mat-freestyle-blue, 500),
   divider:           map_get($mat-grey, 400),
-  dividers:          map_get($mat-grey, 400),
+  dividers:          map_get($mat-grey, 300),
   disabled:          rgba(map_get($mat-freestyle-blue, 500), 0.38),
   disabled-button:   rgba(map_get($mat-freestyle-blue, 500), 0.38),
   disabled-text:     rgba(map_get($mat-freestyle-blue, 500), 0.38),
