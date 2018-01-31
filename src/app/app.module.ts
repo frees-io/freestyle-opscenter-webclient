@@ -37,6 +37,7 @@ import { NavTreeNodeComponent } from './nav-tree-node/nav-tree-node.component';
 import { AddNewMsComponent } from './add-new-ms/add-new-ms.component';
 import { AddNewMsDialogComponent } from './add-new-ms/add-new-ms-dialog.component';
 import { SettingsItemComponent } from './settings-item/settings-item.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SettingsItemComponent } from './settings-item/settings-item.component';
     NavTreeNodeComponent,
     AddNewMsComponent,
     AddNewMsDialogComponent,
-    SettingsItemComponent
+    SettingsItemComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
