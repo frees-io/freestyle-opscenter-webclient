@@ -3,6 +3,6 @@
     <h2 class="tile-link" routerLink="/ms/{{ link | number:'2.0-0'}}">
       Microservice MS{{ link | number:'2.0-0'}}
     </h2>
-    <frees-ms-viewer [id]="link"></frees-ms-viewer>
+    <frees-chart #chart microserviceId="microservice1" nodeId="node" metricId="metric"></frees-chart>
   </mat-grid-tile>
 </mat-grid-list>

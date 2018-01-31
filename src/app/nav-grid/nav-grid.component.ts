@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'frees-nav-grid',
   templateUrl: './nav-grid.component.html',
-  styleUrls: ['./nav-grid.component.scss']
+  styleUrls: ['./nav-grid.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavGridComponent implements OnInit {
 

@@ -1,27 +1,22 @@
-:host {
+frees-nav-grid {
   display: flex;
   height: 100%;
-  width: 100%;
-}
 
-.tile-list {
-  flex: 1 1 auto;
+  .tile-list {
+    flex: 1 1 auto;
 
-  .tile {
-
-    // We need this ng-deep to be able to change the flex-direction
-    // property of the tiles inner content, as it's not configurable
-    ::ng-deep .mat-figure {
+    .tile .mat-figure {
       flex-direction: column;
+      align-items: stretch;
     }
+  }
 
-    .tile-link {
-      transition: color .3s ease;
-    
-      &:hover {
-        color: rgba(0,0,0,.75);
-        cursor: pointer;
-      }
+  .tile-link {
+    transition: color .3s ease;
+  
+    &:hover {
+      color: rgba(0,0,0,.75);
+      cursor: pointer;
     }
   }
 }

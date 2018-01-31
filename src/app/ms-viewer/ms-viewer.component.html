@@ -4,41 +4,16 @@
   </mat-tab>
 </mat-tab-group>
 
-
 <ng-template #content class="content">
-  <div class="ms-viewer">
-    
-    <h1>Microservice MS{{microserviceId}} {{title}}</h1>
-    <p>
-      In this section you can connect to a Freestyle metrics server and start listening to it, the values will be shown on screen
-      as they are received
-    </p>
-
-    <button mat-raised-button color="{{ isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="toggleListening()">
-      {{ isCurrentlyListening() ? 'Stop' : 'Start' }} listening
-    </button>
-
-    <div *ngIf="isCurrentlyListening()">
-        <ngx-charts-line-chart 
-          [scheme]="colorScheme"
-          [results]="chartData"
-          [gradient]="gradient"
-          [xAxis]="showXAxis"
-          [yAxis]="showYAxis"
-          [legend]="showLegend"
-          [showXAxisLabel]="showXAxisLabel"
-          [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel"
-          [yAxisLabel]="yAxisLabel"
-          [autoScale]="autoScale"
-          [animations]="animations"
-          (select)="onSelect($event)">
-        </ngx-charts-line-chart>
-      <mat-progress-bar mode="query"></mat-progress-bar>
-    </div>
-
+  <button mat-raised-button color="{{ chart.isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="chart.toggleListening()">
+    {{ chart.isCurrentlyListening() ? 'Stop' : 'Start' }} listening
+  </button>
+  <div class="chart-wrapper">
+    <frees-chart #chart microserviceId="microservice1" nodeId="node" metricId="metric"></frees-chart>
   </div>
 </ng-template>
+
+
 
 
 
