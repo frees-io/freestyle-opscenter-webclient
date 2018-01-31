@@ -1,14 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-// import { Subscription } from 'rxjs/Subscription';
-// Operators
-import { filter, map, mergeAll } from 'rxjs/operators';
-
-// TODO: Unbind tag selector from MS viewer
-// import { MatTabGroup } from '@angular/material/tabs';
-
-// import { Metric } from 'app/shared/proto/metrics_pb';
-// import { MetricService } from 'app/services/metric.service';
 
 @Component({
   selector: 'frees-ms-viewer',
@@ -19,7 +10,6 @@ import { filter, map, mergeAll } from 'rxjs/operators';
 export class MsViewerComponent implements OnInit {
 
   @Input() id?: string;
-  // @ViewChild(MatTabGroup) tabGroup: MatTabGroup;
 
   title = 'metric streaming';
   microserviceId: string;
@@ -37,9 +27,6 @@ export class MsViewerComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.microserviceId = this.id ? this.id : params.get('id');
       this.metrics = this.metricsPool.sort(() => Math.random() - 0.5).slice(0, 5);
-      // this.chartData[0].name = this.metrics[0];
-      // this.tabGroup.selectedIndex = 0;
-      // this.startListening(this.microserviceId);
     });
   }
 
