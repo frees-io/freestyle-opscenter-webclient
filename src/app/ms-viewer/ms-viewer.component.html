@@ -5,7 +5,7 @@
 </mat-tab-group>
 
 <ng-template #content class="content">
-  <button mat-raised-button color="{{ chart.isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="chart.toggleListening()">
+  <button mat-raised-button color="{{ (chart && chart.isCurrentlyListening()) ? 'warn' : 'primary' }}" (click)="chart.toggleListening()">
     {{ chart.isCurrentlyListening() ? 'Stop' : 'Start' }} listening
   </button>
   <div class="chart-wrapper">
