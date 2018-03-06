@@ -1,12 +1,43 @@
-:host {
+frees-ms-viewer {
+  display: flex;
+  flex: 1 1 auto;
+  height: 90%;
   width: 100%;
-}
 
-.ms-viewer {
-  margin-top: 48px;
-  text-align: center;
-}
+  mat-tab-group {
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+    width:100%;
 
-md-grid-list {
-  height: 60vh;
+    .mat-tab-body-wrapper {
+      display: flex;
+      flex: 1 1 auto;
+      height: 100%;
+      width: 100%;
+    }
+
+    .mat-tab-body-content {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+
+      button {
+        flex: 1 1 auto;
+        // max-height: 100px;
+        align-self: center;
+        height: 36px;
+      }
+
+      // The ngx-chart needs explicitely declared height container 
+      // ancestors for a proper resizing, hence all the hassle
+      .chart-wrapper {
+        display: flex;
+        flex: 1 1 auto;
+        height: calc(100% - 36px);
+      }
+    }
+  }
 }

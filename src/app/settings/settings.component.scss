@@ -1,18 +1,5 @@
-:host {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  width: 100%;
-}
-
-.tile-list {
-  flex: 1 1 auto;
-
-  .tile {
-    transition: background-color .3s ease;
-
-    &:hover {
-      background-color: #eee;
-    }
-  }
+.floating-top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

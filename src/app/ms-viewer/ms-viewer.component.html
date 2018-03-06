@@ -1,60 +1,19 @@
-<md-tab-group #tabGroup>
-  <md-tab *ngFor="let tab of metrics" label="{{ tab }}">
+<mat-tab-group #tabGroup>
+  <mat-tab *ngFor="let tab of metrics" label="{{ tab }}">
     <ng-container *ngTemplateOutlet="content"></ng-container>
-  </md-tab>
-</md-tab-group>
-
+  </mat-tab>
+</mat-tab-group>
 
 <ng-template #content class="content">
-  <div class="ms-viewer">
-    
-    <h1>Microservice MS{{microserviceId}} {{title}}</h1>
-    <p>
-      In this section you can connect to a Freestyle metrics server and start listening to it, the values will be shown on screen
-      as they are received
-    </p>
-
-    <button md-raised-button color="{{ isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="toggleListening()">
-      {{ isCurrentlyListening() ? 'Stop' : 'Start' }} listening
-    </button>
-
-    <div *ngIf="isCurrentlyListening()">
-      <md-grid-list cols="2" rowHeight="fit">
-        <md-grid-tile>
-          <div>{{ metric?.microservice }}</div>
-        </md-grid-tile>
-        <md-grid-tile>
-          <div>{{ metric?.date | date:'y/MM/dd HH:mm:ss (Z)' }}</div>
-        </md-grid-tile>
-        <md-grid-tile>
-          <h2>{{ metric?.metric }}</h2>
-        </md-grid-tile>
-        <md-grid-tile>
-          <h2>{{ metric?.value | number:'1.7-7' }}</h2>
-        </md-grid-tile>
-        <md-grid-tile colspan="2">
-          <ngx-charts-line-chart 
-            [scheme]="colorScheme"
-            [results]="chartData"
-            [gradient]="gradient"
-            [xAxis]="showXAxis"
-            [yAxis]="showYAxis"
-            [legend]="showLegend"
-            [showXAxisLabel]="showXAxisLabel"
-            [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel"
-            [autoScale]="autoScale"
-            [animations]="animations"
-            (select)="onSelect($event)">
-          </ngx-charts-line-chart>
-        </md-grid-tile>
-      </md-grid-list>
-      <md-progress-bar mode="query"></md-progress-bar>
-    </div>
-
+  <button mat-raised-button color="{{ chart.isCurrentlyListening() ? 'warn' : 'primary' }}" (click)="chart.toggleListening()">
+    {{ chart.isCurrentlyListening() ? 'Stop' : 'Start' }} listening
+  </button>
+  <div class="chart-wrapper">
+    <frees-chart #chart microserviceId="microservice1" nodeId="node" metricId="metric"></frees-chart>
   </div>
 </ng-template>
+
+
 
 
 

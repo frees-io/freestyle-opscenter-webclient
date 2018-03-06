@@ -1,0 +1,26 @@
+{
+  "name": "grpc-web-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "generate_cert": "cd ../misc cert/gen_cert.sh",
+    "build:proto": "./protogen.sh",
+    "webpack-dev:tls": "export USE_TLS=true && webpack-dev-server --colors --watch --hot --inline --compress --port 8082 --host 0.0.0.0 --output-public-path=https://localhost:8082/build/ --https --cert=../misc/cert/localhost.crt --key=../misc/cert/localhost.key",
+    "webpack-dev": "webpack-dev-server --colors --watch --hot --inline --compress --port 8081 --host 0.0.0.0 --output-public-path=http://localhost:8081/build/",
+    "start:tls": "npm run build:proto && npm run webpack-dev:tls",
+    "start": "npm run build:proto && npm run webpack-dev"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/google-protobuf": "^3.2.5",
+    "google-protobuf": "^3.2.0",
+    "grpc-web-client": "0.3.0"
+  },
+  "devDependencies": {
+    "ts-loader": "^2.0.1",
+    "ts-protoc-gen": "0.3.2",
+    "typescript": "2.2.1",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
+  }
+}

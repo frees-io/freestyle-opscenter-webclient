@@ -1,0 +1,20 @@
+// We should be including here the material-theming partial
+// @import '~@angular/material/theming';
+// but we can avoid as we know that is included in the palette
+@import 'freestyle-palette';
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($freestyle-light-theme);
+
+// specify theme class eg: <body class="my-theme"> ... </body>
+// .dark-freestyle { 
+  // use our theme with angular-material-theme mixin
+  // @include angular-material-theme($freestyle-dark-theme);
+// }

@@ -1,17 +1,21 @@
-:host {
+frees-nav-grid {
   display: flex;
   height: 100%;
-  width: 100%;
-}
 
-.tile-list {
-  flex: 1 1 auto;
+  .tile-list {
+    flex: 1 1 auto;
 
-  .tile {
-    transition: background-color .3s ease;
+    .tile .mat-figure {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
 
+  .tile-link {
+    transition: color .3s ease;
+  
     &:hover {
-      background-color: #eee;
+      color: rgba(0,0,0,.75);
       cursor: pointer;
     }
   }

@@ -1,0 +1,173 @@
+@import '~@angular/material/theming';
+
+// Color palettes from the Material Design spec.
+// See https://www.google.com/design/spec/style/color.html
+//
+// Contrast colors are hard-coded because it is too difficult (probably impossible) to
+// calculate them. These contrast colors are pulled from the public Material Design spec swatches.
+// While the contrast colors in the spec are not prescriptive, we use them for convenience.
+
+$mat-freestyle-teal: (
+  50 : #E1F6F6,
+  100 : #B4E8E8,
+  200 : #82D9D9,
+  300 : #4FDACA,
+  400 : #2ABEBE,
+  500 : #04B3B3,
+  600 : #03ACAC,
+  700 : #03A3A3,
+  800 : #029A9A,
+  900 : #018B8B,
+  A100 : #B7FFFF,
+  A200 : #84FFFF,
+  A400 : #51FFFF,
+  A700 : #37FFFF,
+  contrast: (
+    50 : black,
+    100 : black,
+    200 : black,
+    300 : black,
+    400 : black,
+    500 : white,
+    600 : white,
+    700 : white,
+    800 : white,
+    900 : white,
+    A100 : black,
+    A200 : black,
+    A400 : black,
+    A700 : black,
+  )
+);
+
+
+$mat-freestyle-blue: (
+  50 : #E2E5E9,
+  100 : #B7BFC7,
+  200 : #8795A2,
+  300 : #576A7C,
+  400 : #334A60,
+  500 : #0F2A44,
+  600 : #0D253E,
+  700 : #0B1F35,
+  800 : #08192D,
+  900 : #040F1F,
+  A100 : #5C92FF,
+  A200 : #2970FF,
+  A400 : #0052F5,
+  A700 : #0049DB,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #FFFFFF,
+    400 : #FFFFFF,
+    500 : #FFFFFF,
+    600 : #FFFFFF,
+    700 : #FFFFFF,
+    800 : #FFFFFF,
+    900 : #FFFFFF,
+    A100 : #000000,
+    A200 : #FFFFFF,
+    A400 : #FFFFFF,
+    A700 : #FFFFFF,
+  )
+);
+
+// Background palette for light themes.
+$freestyle-light-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    map_get($mat-grey, 100),
+  background: map_get($mat-grey, 50),
+  hover:      map_get($mat-grey, 300),
+  card:       white,
+  dialog:     map_get($mat-grey, 100),
+  disabled-button: $black-12-opacity,
+  raised-button: white,
+  focused-button: $black-6-opacity,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+);
+
+// Background palette for dark themes.
+$freestyle-dark-background: (
+  status-bar: map_get($mat-freestyle-blue, 500),
+  app-bar:    map_get($mat-freestyle-blue, 900),
+  background: map_get($mat-freestyle-blue, 500),
+  hover:      rgba(white, 0.04),
+  card:       map_get($mat-freestyle-blue, 800),
+  dialog:     map_get($mat-freestyle-blue, 600),
+  disabled-button: $white-12-opacity,
+  raised-button: map-get($mat-freestyle-blue, 800),
+  focused-button: $white-6-opacity,
+  selected-button: map_get($mat-freestyle-blue, 900),
+  selected-disabled-button: map_get($mat-freestyle-blue, 800),
+  disabled-button-toggle: map_get($mat-freestyle-blue, 500),
+  unselected-chip: map_get($mat-freestyle-blue, 700),
+  disabled-list-option: map_get($mat-freestyle-blue, 500),
+);
+
+// Foreground palette for light themes.
+$freestyle-light-foreground: (
+  base:              map_get($mat-freestyle-blue, 500),
+  divider:           map_get($mat-grey, 400),
+  dividers:          map_get($mat-grey, 300),
+  disabled:          rgba(map_get($mat-freestyle-blue, 500), 0.38),
+  disabled-button:   rgba(map_get($mat-freestyle-blue, 500), 0.38),
+  disabled-text:     rgba(map_get($mat-freestyle-blue, 500), 0.38),
+  hint-text:         rgba(map_get($mat-freestyle-blue, 500), 0.38),
+  secondary-text:    rgba(map_get($mat-freestyle-blue, 500), 0.54),
+  icon:              rgba(map_get($mat-freestyle-blue, 500), 0.54),
+  icons:             rgba(map_get($mat-freestyle-blue, 500), 0.54),
+  text:              rgba(map_get($mat-freestyle-blue, 500), 0.87),
+  slider-min:        rgba(map_get($mat-freestyle-blue, 500), 0.87),
+  slider-off:        rgba(map_get($mat-freestyle-blue, 500), 0.26),
+  slider-off-active: rgba(map_get($mat-freestyle-blue, 500), 0.38),
+);
+
+// Foreground palette for dark themes.
+$freestyle-dark-foreground: (
+  base:              white,
+  divider:           $white-12-opacity,
+  dividers:          $white-12-opacity,
+  disabled:          rgba(white, 0.3),
+  disabled-button:   rgba(white, 0.3),
+  disabled-text:     rgba(white, 0.3),
+  hint-text:         rgba(white, 0.3),
+  secondary-text:    rgba(white, 0.7),
+  icon:              white,
+  icons:             white,
+  text:              white,
+  slider-min:        white,
+  slider-off:        rgba(white, 0.3),
+  slider-off-active: rgba(white, 0.3),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. The warn palette is optional (defaults to red).
+$freestyle-primary: mat-palette($mat-freestyle-teal);
+$freestyle-accent:  mat-palette($mat-freestyle-blue);
+$freestyle-warn:    mat-palette($mat-orange);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$freestyle-light-theme: (
+    primary: $freestyle-primary,
+    accent: $freestyle-accent,
+    warn: $freestyle-warn,
+    is-dark: false,
+    foreground: $freestyle-light-foreground,
+    background: $freestyle-light-background,
+);
+
+$freestyle-dark-theme: (
+    primary: $freestyle-primary,
+    accent: $freestyle-accent,
+    warn: $freestyle-warn,
+    is-dark: true,
+    foreground: $freestyle-dark-foreground,
+    background: $freestyle-dark-background,
+);
